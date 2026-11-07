@@ -1,0 +1,12 @@
+{
+  "id": "json-schema-validator",
+  "title": "Lightweight JSON Schema Validator",
+  "difficulty": "hard",
+  "timeout": 5,
+  "prompt": "Implement `validate_schema(data: dict, schema: dict) -> tuple[bool, list[str]]` in `solution.py` without third-party libraries.\nSupported schema keywords for objects:\n- `\"type\"`: 'string', 'number' (int or float, not bool), 'boolean', 'list', 'dict'\n- `\"required\"`: list of required property names\n- `\"properties\"`: dictionary mapping property names to sub-schemas\nReturn `(True, [])` if `data` matches `schema`.\nOtherwise return `(False, error_messages)` where error_messages lists descriptive errors (e.g. 'missing field x', 'field y expected string got int').",
+  "starter_files": {
+    "solution.py": "def validate_schema(data: dict, schema: dict) -> tuple[bool, list[str]]:\n    # Implement validation\n    pass\n"
+  },
+  "hidden_tests": "import unittest\nfrom solution import validate_schema\n\nclass TestSchemaValidator(unittest.TestCase):\n    def setUp(self):\n        self.user_schema = {\n            \"type\": \"dict\",\n            \"required\": [\"name\", \"age\"],\n            \"properties\": {\n                \"name\": {\"type\": \"string\"},\n                \"age\": {\"type\": \"number\"},\n                \"active\": {\"type\": \"boolean\"}\n            }\n        }\n\n    def test_valid(self):\n        valid_data = {\"name\": \"Alice\", \"age\": 30, \"active\": True}\n        ok, errors = validate_schema(valid_data, self.user_schema)\n        self.assertTrue(ok)\n        self.assertEqual(len(errors), 0)\n\n    def test_missing_required(self):\n        invalid_data = {\"name\": \"Bob\"}\n        ok, errors = validate_schema(invalid_data, self.user_schema)\n        self.assertFalse(ok)\n        self.assertTrue(any(\"age\" in err for err in errors))\n\n    def test_type_mismatch(self):\n        # In Python bool is subclass of int; boolean must not match number!\n        invalid_data = {\"name\": \"Charlie\", \"age\": True}\n        ok, errors = validate_schema(invalid_data, self.user_schema)\n        self.assertFalse(ok)\n\nif __name__ == '__main__':\n    unittest.main()\n"
+}
+

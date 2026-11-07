@@ -1,0 +1,20 @@
+version: '3.8'
+
+services:
+  bifrost:
+    image: maximhq/bifrost:latest
+    container_name: agentarena-bifrost
+    ports:
+      - "8080:8080"
+    environment:
+      - OPENAI_API_KEY=${OPENAI_API_KEY:-}
+      - ANTHROPIC_API_KEY=${ANTHROPIC_API_KEY:-}
+      - GEMINI_API_KEY=${GEMINI_API_KEY:-}
+      - GROQ_API_KEY=${GROQ_API_KEY:-}
+      - BIFROST_SETUP_TOKEN=${BIFROST_SETUP_TOKEN:-agentarena-setup-token-secret}
+      - BIFROST_ENCRYPTION_KEY=${BIFROST_ENCRYPTION_KEY:-bifrost-secret-encryption-key-32}
+    volumes:
+      - ./bifrost-data:/app/data
+      - ./bifrost/config.json:/app/config.json:ro
+    restart: unless-stopped
+

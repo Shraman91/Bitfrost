@@ -1,0 +1,49 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.pytest_cache/
+*.egg-info/
+dist/
+build/
+
+# Environments
+.venv/
+venv/
+ENV/
+env/
+
+# Environment Variables & Secrets
+.env
+.env.*
+!.env.example
+*.pem
+*serviceAccount*.json
+*credentials*.json
+
+# Frontend & Node
+node_modules/
+.next/
+out/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Bifrost runtime data & DB
+bifrost-data/
+*.sqlite
+*.sqlite3
+*.db
+.arena_db.json
+
+# Sandbox temp artifacts
+arena_sandbox_*
+
+# IDE & OS
+.DS_Store
+Thumbs.db
+.idea/
+*.swp
+*.swo

@@ -1,0 +1,12 @@
+{
+  "id": "case-converter",
+  "title": "Case Converter",
+  "difficulty": "medium",
+  "timeout": 5,
+  "prompt": "Implement `to_snake_case(s: str) -> str` and `to_camel_case(s: str) -> str` in `solution.py`.\nInput strings may be in camelCase, PascalCase, or kebab-case.\nSpecial acronym rules:\n- Consecutive uppercase letters representing acronyms should be treated as a single token in snake_case (e.g. 'HTTPRequest' -> 'http_request', 'parseURLParams' -> 'parse_url_params').\n- `to_camel_case` should always start with a lowercase letter.",
+  "starter_files": {
+    "solution.py": "def to_snake_case(s: str) -> str:\n    pass\n\ndef to_camel_case(s: str) -> str:\n    pass\n"
+  },
+  "hidden_tests": "import unittest\nfrom solution import to_snake_case, to_camel_case\n\nclass TestCaseConverter(unittest.TestCase):\n    def test_snake_case_acronyms(self):\n        self.assertEqual(to_snake_case(\"parseHTTPRequest\"), \"parse_http_request\")\n        self.assertEqual(to_snake_case(\"simpleCamelCase\"), \"simple_camel_case\")\n        self.assertEqual(to_snake_case(\"kebab-case-string\"), \"kebab_case_string\")\n\n    def test_camel_case(self):\n        self.assertEqual(to_camel_case(\"user_id\"), \"userId\")\n        self.assertEqual(to_camel_case(\"get_xml_rpc_data\"), \"getXmlRpcData\")\n        self.assertEqual(to_camel_case(\"kebab-case-example\"), \"kebabCaseExample\")\n\nif __name__ == '__main__':\n    unittest.main()\n"
+}
+

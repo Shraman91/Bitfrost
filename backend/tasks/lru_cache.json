@@ -1,0 +1,12 @@
+{
+  "id": "lru-cache",
+  "title": "LRU Cache",
+  "difficulty": "medium",
+  "timeout": 5,
+  "prompt": "Implement the `LRUCache` class in `solution.py`:\n- `__init__(self, capacity: int)`: initialize with positive capacity.\n- `get(self, key: int) -> int`: return the value if key exists, else -1.\n- `put(self, key: int, value: int) -> None`: insert or update key-value. If total keys exceed capacity, evict the least recently used key.\nBoth `get` and `put` should run in O(1) average time complexity.",
+  "starter_files": {
+    "solution.py": "class LRUCache:\n    def __init__(self, capacity: int):\n        pass\n\n    def get(self, key: int) -> int:\n        pass\n\n    def put(self, key: int, value: int) -> None:\n        pass\n"
+  },
+  "hidden_tests": "import unittest\nfrom solution import LRUCache\n\nclass TestLRUCache(unittest.TestCase):\n    def test_basic_flow(self):\n        cache = LRUCache(2)\n        cache.put(1, 10)\n        cache.put(2, 20)\n        self.assertEqual(cache.get(1), 10)\n        cache.put(3, 30) # evicts 2\n        self.assertEqual(cache.get(2), -1)\n        self.assertEqual(cache.get(3), 30)\n        self.assertEqual(cache.get(1), 10)\n\n    def test_update_existing(self):\n        cache = LRUCache(2)\n        cache.put(1, 1)\n        cache.put(2, 2)\n        cache.put(1, 100)\n        cache.put(3, 3) # should evict 2, not 1\n        self.assertEqual(cache.get(1), 100)\n        self.assertEqual(cache.get(2), -1)\n        self.assertEqual(cache.get(3), 3)\n\nif __name__ == '__main__':\n    unittest.main()\n"
+}
+

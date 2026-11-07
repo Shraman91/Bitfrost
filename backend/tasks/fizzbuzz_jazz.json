@@ -1,0 +1,12 @@
+{
+  "id": "fizzbuzz-jazz",
+  "title": "FizzBuzz Jazz",
+  "difficulty": "easy",
+  "timeout": 5,
+  "prompt": "Implement `fizzbuzz_jazz(n: int) -> list[str]` in `solution.py`. For numbers 1 to n (inclusive):\n- If divisible by 3, output includes 'Fizz'\n- If divisible by 5, output includes 'Buzz'\n- If divisible by 7, output includes 'Jazz'\nMultiples concatenate in that exact order (e.g. 15 -> 'FizzBuzz', 21 -> 'FizzJazz', 35 -> 'BuzzJazz', 105 -> 'FizzBuzzJazz').\nDivisible by none: string of the number (e.g. '1'). Return the list of strings.",
+  "starter_files": {
+    "solution.py": "def fizzbuzz_jazz(n: int) -> list[str]:\n    # Implement here\n    pass\n"
+  },
+  "hidden_tests": "import unittest\nfrom solution import fizzbuzz_jazz\n\nclass TestFizzBuzzJazz(unittest.TestCase):\n    def test_small(self):\n        res = fizzbuzz_jazz(7)\n        expected = ['1', '2', 'Fizz', '4', 'Buzz', 'Fizz', 'Jazz']\n        self.assertEqual(res, expected)\n\n    def test_multiples(self):\n        res = fizzbuzz_jazz(105)\n        self.assertEqual(res[14], 'FizzBuzz')   # 15\n        self.assertEqual(res[20], 'FizzJazz')   # 21\n        self.assertEqual(res[34], 'BuzzJazz')   # 35\n        self.assertEqual(res[104], 'FizzBuzzJazz') # 105\n\n    def test_edge_zero(self):\n        self.assertEqual(fizzbuzz_jazz(0), [])\n\nif __name__ == '__main__':\n    unittest.main()\n"
+}
+

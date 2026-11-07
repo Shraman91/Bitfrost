@@ -1,0 +1,12 @@
+{
+  "id": "token-bucket",
+  "title": "Token Bucket Rate Limiter",
+  "difficulty": "hard",
+  "timeout": 5,
+  "prompt": "Implement the `TokenBucket` class in `solution.py`:\n- `__init__(self, capacity: float, refill_rate: float)`: initialize with capacity (maximum tokens stored) and refill_rate (tokens added per second). Bucket starts completely full at time 0.0.\n- `allow_request(self, tokens: float, current_time: float) -> bool`: refills tokens based on elapsed time since the last request, caps at capacity, and if available tokens >= requested `tokens`, deducts `tokens` and returns True; otherwise returns False without deducting.",
+  "starter_files": {
+    "solution.py": "class TokenBucket:\n    def __init__(self, capacity: float, refill_rate: float):\n        pass\n\n    def allow_request(self, tokens: float, current_time: float) -> bool:\n        pass\n"
+  },
+  "hidden_tests": "import unittest\nfrom solution import TokenBucket\n\nclass TestTokenBucket(unittest.TestCase):\n    def test_burst(self):\n        bucket = TokenBucket(capacity=10.0, refill_rate=1.0)\n        self.assertTrue(bucket.allow_request(6.0, 0.0))\n        self.assertTrue(bucket.allow_request(4.0, 0.0))\n        self.assertFalse(bucket.allow_request(1.0, 0.0))\n\n    def test_refill(self):\n        bucket = TokenBucket(capacity=5.0, refill_rate=2.0)\n        self.assertTrue(bucket.allow_request(5.0, 0.0))\n        self.assertFalse(bucket.allow_request(1.0, 0.2)) # only 0.4 tokens refilled\n        self.assertTrue(bucket.allow_request(2.0, 1.0))  # 2.0 refilled at t=1.0\n\n    def test_cap_at_capacity(self):\n        bucket = TokenBucket(capacity=5.0, refill_rate=10.0)\n        self.assertTrue(bucket.allow_request(1.0, 0.0))\n        # after 100 seconds, tokens should not exceed capacity 5.0\n        self.assertFalse(bucket.allow_request(6.0, 100.0))\n        self.assertTrue(bucket.allow_request(5.0, 100.0))\n\nif __name__ == '__main__':\n    unittest.main()\n"
+}
+

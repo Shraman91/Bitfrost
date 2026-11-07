@@ -1,0 +1,12 @@
+{
+  "id": "bracket-validator",
+  "title": "Balanced Brackets with String Literals",
+  "difficulty": "medium",
+  "timeout": 5,
+  "prompt": "Implement `is_valid_brackets(s: str) -> bool` in `solution.py`.\nCheck that bracket pairs `()`, `[]`, `{}` are properly matched and nested.\nAny brackets occurring inside single (`'...'`) or double (`\"...\"`) string literals must be ignored!\nEscaped quotes like `\\\"` or `\\'` inside string literals must not terminate the string literal.",
+  "starter_files": {
+    "solution.py": "def is_valid_brackets(s: str) -> bool:\n    # Implement here\n    pass\n"
+  },
+  "hidden_tests": "import unittest\nfrom solution import is_valid_brackets\n\nclass TestBracketValidator(unittest.TestCase):\n    def test_simple_balanced(self):\n        self.assertTrue(is_valid_brackets(\"{[()]}\"))\n        self.assertFalse(is_valid_brackets(\"{[(])}\"))\n\n    def test_brackets_inside_strings(self):\n        self.assertTrue(is_valid_brackets(\"foo('{')\"))\n        self.assertTrue(is_valid_brackets('let a = [\"(\", \"]\"];'))\n        self.assertFalse(is_valid_brackets('foo(\"(\")'))\n\n    def test_escaped_quotes_inside_strings(self):\n        self.assertTrue(is_valid_brackets('(\"hello \\\"world\\\" [test]\")'))\n\nif __name__ == '__main__':\n    unittest.main()\n"
+}
+

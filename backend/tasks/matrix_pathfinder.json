@@ -1,0 +1,12 @@
+{
+  "id": "matrix-pathfinder",
+  "title": "Shortest Path in Grid with Obstacles",
+  "difficulty": "hard",
+  "timeout": 5,
+  "prompt": "Implement `shortest_path(grid: list[list[int]], start: tuple[int, int], end: tuple[int, int]) -> int` in `solution.py`.\n`grid` is a 2D matrix where 0 represents an open cell and 1 represents an obstacle.\nYou can move in 4 directions: up, down, left, right.\nReturn the number of cells in the shortest path from `start` (row, col) to `end` (row, col) inclusive.\nIf no valid path exists, or if start or end is blocked, return -1.",
+  "starter_files": {
+    "solution.py": "def shortest_path(grid: list[list[int]], start: tuple[int, int], end: tuple[int, int]) -> int:\n    # Implement BFS shortest path\n    pass\n"
+  },
+  "hidden_tests": "import unittest\nfrom solution import shortest_path\n\nclass TestMatrixPathfinder(unittest.TestCase):\n    def test_direct_path(self):\n        grid = [\n            [0, 0, 0],\n            [1, 1, 0],\n            [0, 0, 0]\n        ]\n        self.assertEqual(shortest_path(grid, (0, 0), (2, 2)), 5)\n\n    def test_blocked(self):\n        grid = [\n            [0, 1],\n            [1, 0]\n        ]\n        self.assertEqual(shortest_path(grid, (0, 0), (1, 1)), -1)\n\n    def test_start_equals_end(self):\n        grid = [[0]]\n        self.assertEqual(shortest_path(grid, (0, 0), (0, 0)), 1)\n\nif __name__ == '__main__':\n    unittest.main()\n"
+}
+

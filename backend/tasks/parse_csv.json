@@ -1,0 +1,12 @@
+{
+  "id": "parse-csv",
+  "title": "Robust CSV Line Parser",
+  "difficulty": "medium",
+  "timeout": 5,
+  "prompt": "Implement `parse_csv_line(line: str) -> list[str]` in `solution.py` without using the standard `csv` module.\n- Comma `,` is the delimiter.\n- Fields enclosed in double quotes `\"` can contain commas.\n- A double quote inside quotes is escaped by two double quotes `\"\"`.\n- Leading and trailing spaces around unquoted fields should be trimmed.\n- Quoted fields preserve their exact internal spaces.",
+  "starter_files": {
+    "solution.py": "def parse_csv_line(line: str) -> list[str]:\n    # Implement here without importing csv\n    pass\n"
+  },
+  "hidden_tests": "import unittest\nfrom solution import parse_csv_line\n\nclass TestParseCSV(unittest.TestCase):\n    def test_simple(self):\n        self.assertEqual(parse_csv_line(\"a, b, c\"), [\"a\", \"b\", \"c\"])\n\n    def test_quoted_commas(self):\n        self.assertEqual(parse_csv_line('\"John, Jr.\", 25, Engineer'), [\"John, Jr.\", \"25\", \"Engineer\"])\n\n    def test_escaped_quotes(self):\n        self.assertEqual(parse_csv_line('\"He said \"\"Hello\"\"\", ok'), ['He said \"Hello\"', \"ok\"])\n\n    def test_empty_fields(self):\n        self.assertEqual(parse_csv_line('a,,c'), [\"a\", \"\", \"c\"])\n\nif __name__ == '__main__':\n    unittest.main()\n"
+}
+

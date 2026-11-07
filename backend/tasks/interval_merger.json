@@ -1,0 +1,12 @@
+{
+  "id": "interval-merger",
+  "title": "Merge Overlapping Intervals",
+  "difficulty": "medium",
+  "timeout": 5,
+  "prompt": "Implement `merge_intervals(intervals: list[list[int]]) -> list[list[int]]` in `solution.py`.\nGiven an array of intervals where intervals[i] = [start, end], merge all overlapping intervals and return an array of non-overlapping intervals in ascending sorted order of start time.\nTouching intervals like [1, 4] and [4, 5] overlap and must be merged to [1, 5].",
+  "starter_files": {
+    "solution.py": "def merge_intervals(intervals: list[list[int]]) -> list[list[int]]:\n    # Implement here\n    pass\n"
+  },
+  "hidden_tests": "import unittest\nfrom solution import merge_intervals\n\nclass TestIntervalMerger(unittest.TestCase):\n    def test_overlapping(self):\n        self.assertEqual(merge_intervals([[1, 3], [2, 6], [8, 10], [15, 18]]),\n                         [[1, 6], [8, 10], [15, 18]])\n\n    def test_touching(self):\n        self.assertEqual(merge_intervals([[1, 4], [4, 5]]), [[1, 5]])\n\n    def test_unsorted_and_nested(self):\n        self.assertEqual(merge_intervals([[1, 10], [2, 3], [4, 8]]),\n                         [[1, 10]])\n\n    def test_empty(self):\n        self.assertEqual(merge_intervals([]), [])\n\nif __name__ == '__main__':\n    unittest.main()\n"
+}
+
